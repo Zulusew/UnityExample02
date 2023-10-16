@@ -2,17 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CharacterController))]
 public class NPS : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private NpsStateMachine _stateMachine;
+    private CharacterController _characterController;
+
+    private void Awake()
     {
-        
+        _characterController = GetComponent<CharacterController>();
+        _stateMachine = new NpsStateMachine();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        _stateMachine.Update();
     }
+
 }
